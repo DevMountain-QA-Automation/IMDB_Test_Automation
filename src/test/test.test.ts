@@ -8,11 +8,17 @@ import { imdbBasePage } from "./imdbBasePage";
 
 const page = new imdbBasePage(driver);
 
-test("get url", async () => {
-    await page.navigate();
-});
+describe('app functionality', async () =>{
+    beforeEach(()=>{
+        page.navigate();
+    })
+    afterAll(()=>{
+        page.quit()
+    })
 
-test("search somefin", async () => {
-    await page.doSearch("Otters and the exotic pet trade");
-    expect(await page.getResults()).toContain("Otters and the exotic pet trade");
-});
+    test("search something", async () => {
+        await page.doSearch("Otters");
+        await page.click(page.searchItemBtn)
+        expect(await page.getSearchResults()).toContain("Otters and the Exotic Pet Trade");
+    });
+})
