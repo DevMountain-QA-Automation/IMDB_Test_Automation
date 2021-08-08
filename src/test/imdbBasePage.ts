@@ -18,6 +18,7 @@ export class imdbBasePage {
   searchItemBtn: By = By.xpath(
     "//a[contains(@href, '/title/tt12252296?ref_=nv_sr_srsg_0')]"
   );
+  signInBtn: By = By.xpath("//a[contains(@href, '/registration/signin?ref=nv_generic_lgin')]")
   // IMDb movie title view
   movieTitleView: By = By.xpath(
     "//h1[contains(@data-testid, 'hero-title-block__title')]"
@@ -60,6 +61,6 @@ export class imdbBasePage {
 
   async getSearchResults() {
     await this.driver.findElement(this.movieTitleView);
-    return await this.driver.findElement(this.movieTitleView).getText();
+    return await this.driver.findElement(this.movieTitleView).isDisplayed();
   }
 }
