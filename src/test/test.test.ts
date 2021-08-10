@@ -4,9 +4,9 @@ const driver: WebDriver = new Builder()
     .withCapabilities(Capabilities.chrome())
     .build();
 
-import { imdbBasePage } from "./imdbBasePage";
+import {BasePage} from "./imdbBasePage";
 
-const page = new imdbBasePage(driver);
+const page = new BasePage(driver);
 
 describe('app functionality', async () =>{
     beforeEach(()=>{
