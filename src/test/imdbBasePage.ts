@@ -22,8 +22,7 @@ export class imdbBasePage {
 
   // user display name
   displayName: By = By.xpath(
-    `//span[contains(@class, 'imdb-header__account-toggle--logged-in imdb-header__accountmenu-toggle navbar__user-name 
-    navbar__user-menu-toggle__name navbar__user-menu-toggle--desktop')]`
+    "//span[contains(@class,'imdb-header__account-toggle--logged-in imdb-header__accountmenu-toggle navbar__user-name navbar__user-menu-toggle__name navbar__user-menu-toggle--desktop')]"
   )
 
   // homepage sign in button
@@ -45,13 +44,24 @@ export class imdbBasePage {
   // imdb in sign in page sign in button
   imdbSignInNextBtn: By = By.xpath("//input[contains(@id, 'signInSubmit')]")
 
-  // viewPhotoBtn: By = By.xpath(
-  //   "//a[contains(@data-testid, 'hero-media__photo-link')]",
-  // )
+  // 
+  celebs: By = By.css('label[for="nav-link-categories-celebs"]');
 
-  // searchBarGK: By = By.xpath(
-  //   "//div[contains(@class, 'searchResults__ResultTextItem-sc-1pmqwbq-2 lolMki _26kHO_8bFBduUIYADnVHFY')]",
-  // )
+  // 
+  born: By = By.xpath("//a[contains(@href, '/feature/bornondate/?ref_=nv_cel_brn')]");
+
+  // actor name display
+  actor: By = By.xpath("//div[contains(@class, 'lister-item mode-detail')][1]//h3[contains(@class, 'lister-item-header')]//a[contains(@href, '/name/nm4793106')]");
+  
+  // right navigation button to toggle through videos 
+  videoNavigationBtnRight: By = By.xpath(
+    "//div[contains(@class, 'ipc-shoveler__arrow ipc-shoveler__arrow--visible ipc-shoveler__arrow--right ipc-pager ipc-pager--visible ipc-pager--right')]"
+  );
+
+  // left navigation button to toggle through videos
+  videoNavigationBtnLeft: By = By.xpath(
+    "//div[contains(@class, 'ipc-shoveler__arrow ipc-shoveler__arrow--visible ipc-shoveler__arrow--left ipc-pager ipc-pager--visible ipc-pager--left')]"
+  )
 
   constructor(driver: WebDriver) {
     this.driver = driver
@@ -93,11 +103,6 @@ export class imdbBasePage {
     await this.driver.wait(until.elementIsVisible(await this.driver.wait(until.elementLocated(elementBy))))
     return (await this.driver.findElement(elementBy)).getText()
   }
-
-  // // Gets the search results of an element
-  // async getSearchResults(elementBy: By) {
-  //   return await this.driver.findElement(elementBy).getText()
-  // }
 
   // IMDB SIGN IN PAGE METHODS
 

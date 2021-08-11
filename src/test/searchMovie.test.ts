@@ -1,4 +1,3 @@
-const chromedriver = require("chromedriver");
 import {
   WebDriver,
   Builder,
@@ -6,15 +5,16 @@ import {
   until,
   By,
 } from "selenium-webdriver";
+import { imdbBasePage } from "./imdbBasePage";
+const chromedriver = require("chromedriver");
 const driver: WebDriver = new Builder()
   .withCapabilities(Capabilities.chrome())
   .build();
 
-import { imdbBasePage } from "./imdbBasePage";
 
 const bp = new imdbBasePage(driver);
 
-test("searching for a movie", () => {
+describe("Movie lookup", () => {
   
   beforeEach(() => {
     bp.navigate("https://www.imdb.com/?ref_=nv_home");
@@ -24,7 +24,7 @@ test("searching for a movie", () => {
   });
 
   // IMDb search movie test
-  test("search for movie", async () => {
+  test("movie searching", async () => {
     await bp.sendKeys(bp.searchBar, "Otters");
     await bp.click(bp.searchItemBtn);
     expect(await bp.getText(bp.movieTitleView)).toContain(

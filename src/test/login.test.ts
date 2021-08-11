@@ -1,4 +1,3 @@
-const chromedriver = require("chromedriver");
 import {
   WebDriver,
   Builder,
@@ -6,25 +5,25 @@ import {
   until,
   By,
 } from "selenium-webdriver";
+import { imdbBasePage } from "./imdbBasePage";
+const chromedriver = require("chromedriver");
 const driver: WebDriver = new Builder()
   .withCapabilities(Capabilities.chrome())
   .build();
 
-import { imdbBasePage } from "./imdbBasePage";
 
 const bp = new imdbBasePage(driver);
 
-describe("logging into application", async () => {
-
-  beforeEach(() => {
-    bp.navigate("https://www.imdb.com/?ref_=nv_home");
+describe("Logging into application", () => {
+  beforeEach(async () => {
+    await bp.navigate("https://www.imdb.com/?ref_=nv_home");
   });
-  afterAll(() => {
-    bp.quit();
+  afterAll(async () => {
+    await bp.quit();
   });
 
   // IMDb Google SignIn test
-  test("can login", async () => {
+  test("logging in", async () => {
     await bp.click(bp.imdbHomePagesignInBtn);
     await bp.click(bp.imdbSignInBtn);
     await bp.insertEmail("johndoemarydoe7@gmail.com");
@@ -32,7 +31,6 @@ describe("logging into application", async () => {
     await bp.click(bp.imdbSignInNextBtn);
     expect(await bp.getText(bp.displayName)).toBe("John");
   });
-
 });
 
 // // IMDb search movie test
