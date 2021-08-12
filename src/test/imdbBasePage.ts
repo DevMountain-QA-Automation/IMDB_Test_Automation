@@ -46,6 +46,16 @@ export class BasePage {
     "//div[contains(@class, 'ipc-shoveler__arrow ipc-shoveler__arrow--visible ipc-shoveler__arrow--left ipc-pager ipc-pager--visible ipc-pager--left')]"
   )
   //IMDb navigation button to toggle through videos to the left 
+
+  videoDisplay: By = By.xpath(
+    "//div[contains(@class, 'ipc-slate-card__title-text ipc-slate-card__title-text--clamp-1')]"
+  ); 
+  //Display of 1 of the video after toggling 
+
+  videoTitle: By = By.xpath(
+    "//h5[contains(@class, 'RelationInfostyles__RelationTitle-sc-1a6joiq-1 iMMyKJ')]"
+  );
+  //title to be expect from the first video after toggling 
   
   celebs: By = By.css('label[for="nav-link-categories-celebs"]');
   born: By = By.xpath("//a[contains(@href, '/feature/bornondate/?ref_=nv_cel_brn')]");

@@ -24,7 +24,9 @@ afterAll(() =>{
 test('movie navi button', async () => {
   await page.navigate('https://www.imdb.com/title/tt9243804/?ref_=nv_sr_srsg_0')
   await page.click(page.videoNavibuttonRight)
-  await page.click(page.videoNavibuttonLeft)
+  await page.click(page.videoDisplay)
+  let movieTitle = await page.getText(page.videoTitle)
+  expect(movieTitle).toBe("The Green Knight (2021)")
 })
 
 
