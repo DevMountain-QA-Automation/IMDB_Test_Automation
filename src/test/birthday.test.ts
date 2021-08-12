@@ -11,6 +11,8 @@ const driver: WebDriver = new Builder()
   .withCapabilities(Capabilities.chrome())
   .build();
 
+
+  
 const bp = new imdbBasePage(driver);
 
 describe("Viewing celebrities birthday", () => {
