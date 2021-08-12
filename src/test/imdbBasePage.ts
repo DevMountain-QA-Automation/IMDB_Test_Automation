@@ -63,6 +63,16 @@ export class imdbBasePage {
     "//div[contains(@class, 'ipc-shoveler__arrow ipc-shoveler__arrow--visible ipc-shoveler__arrow--left ipc-pager ipc-pager--visible ipc-pager--left')]"
   )
 
+  //Display of the video after toggling 
+  videoDisplay: By = By.xpath(
+    "//div[contains(@class, 'ipc-slate-card__title-text ipc-slate-card__title-text--clamp-1')]"
+  ); 
+
+  //title to be expected from the first video after toggling 
+  videoTitle: By = By.xpath(
+    "//h5[contains(@class, 'RelationInfostyles__RelationTitle-sc-1a6joiq-1 iMMyKJ')]"
+  );
+
   constructor(driver: WebDriver) {
     this.driver = driver
   }
