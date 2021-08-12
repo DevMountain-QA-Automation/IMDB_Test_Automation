@@ -22,6 +22,8 @@ describe("Navigation of movie related videos gallery", async () => {
   test("movie related videos navigation button", async () => {
     await bp.navigate("https://www.imdb.com/title/tt9243804/?ref_=nv_sr_srsg_0");
     await bp.click(bp.videoNavigationBtnRight);
-    await bp.click(bp.videoNavigationBtnLeft);
+    await bp.click(bp.videoDisplay)
+    let movieTitle = await bp.getText(bp.videoTitle)
+    expect(movieTitle).toBe("The Green Knight (2021)")
   });
 });
