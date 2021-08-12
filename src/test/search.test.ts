@@ -22,3 +22,5 @@ afterAll(async () => {
 
 // We should return to home page with imdb logo after every test
 // Make some flow charts/equivalence partitions
+
+// For Dre: non interactable a bug or code error?

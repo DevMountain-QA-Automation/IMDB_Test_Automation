@@ -16,15 +16,16 @@ export class BasePage {
   searchBar: By = By.id("suggestion-search");
   // IMDb movie result button
   searchItemBtn: By = By.xpath(
-    "//a[contains(@href, '/title/tt12252296?ref_=nv_sr_srsg_0')]"
-  );
+    "//a[contains(@href, '/title/tt12252296?ref_=nv_sr_srsg_0')]");
   // IMDb movie title view
   movieTitleView: By = By.xpath(
-    "//h1[contains(@data-testid, 'hero-title-block__title')]"
-  );
+    "//h1[contains(@data-testid, 'hero-title-block__title')]");
+  // Celebs category of IMDb menu
   celebs: By = By.css('label[for="nav-link-categories-celebs"]');
+  // Bort Today button under Celebs category
   born: By = By.xpath("//a[contains(@href, '/feature/bornondate/?ref_=nv_cel_brn')]");
-  actor: By = By.xpath("//div[contains(@class, 'lister-item mode-detail')][1]//h3[contains(@class, 'lister-item-header')]//a[contains(@href, '/name/nm4793106')]");
+  // first actor on born today list
+  actor: By = By.xpath("//div[contains(@class, 'lister-item mode-detail')][1]//h3[contains(@class, 'lister-item-header')]//a[contains(@href, '/name/nm0447695')]");
 
   constructor(driver: WebDriver) {
     this.driver = driver;

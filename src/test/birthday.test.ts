@@ -8,13 +8,14 @@ import { BasePage } from "./imdbBasePage";
 
 const page = new BasePage(driver);
 
+// Function lists celebrity born on current date
 test("celeb birthday", async () => {
     await page.navigate();
     await page.click(page.menu);
     await page.click(page.celebs);
     await page.click(page.born);
     let bday = await page.getText(page.actor);
-    expect(bday).toContain("Mãdãlina Ghenea");
+    expect(bday).toContain("Anna Kendrick");
 });
 
 afterAll(async () => {
