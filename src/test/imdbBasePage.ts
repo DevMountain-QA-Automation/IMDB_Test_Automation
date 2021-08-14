@@ -28,6 +28,16 @@ export class BasePage {
   // first actor on born today list
   actor: By = By.xpath("//div[contains(@class, 'lister-item mode-detail')][1]//h3[contains(@class, 'lister-item-header')]//a[contains(@href, '/name/nm0447695')]");
 
+  //IMDb navigation button to toggle through videos to the right 
+  videoNavibuttonRight: By = By.xpath(
+    "//div[contains(@class, 'ipc-shoveler__arrow ipc-shoveler__arrow--visible ipc-shoveler__arrow--right ipc-pager ipc-pager--visible ipc-pager--right')]"
+  );
+
+  //IMDb navigation button to toggle through videos to the left 
+  videoNavibuttonLeft: By = By.xpath(
+    "//div[contains(@class, 'ipc-shoveler__arrow ipc-shoveler__arrow--visible ipc-shoveler__arrow--left ipc-pager ipc-pager--visible ipc-pager--left')]"
+  )
+
   constructor(driver: WebDriver) {
     this.driver = driver;
   }
@@ -67,4 +77,6 @@ export class BasePage {
     await this.driver.findElement(this.movieTitleView);
     return await this.driver.findElement(this.movieTitleView).getText();
   }
+
 }
+
