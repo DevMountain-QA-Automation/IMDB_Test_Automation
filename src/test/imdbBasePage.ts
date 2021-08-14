@@ -73,6 +73,16 @@ export class imdbBasePage {
     "//h5[contains(@class, 'RelationInfostyles__RelationTitle-sc-1a6joiq-1 iMMyKJ')]"
   );
 
+  //IMDb navigation button to toggle through videos to the right 
+  videoNavibuttonRight: By = By.xpath(
+    "//div[contains(@class, 'ipc-shoveler__arrow ipc-shoveler__arrow--visible ipc-shoveler__arrow--right ipc-pager ipc-pager--visible ipc-pager--right')]"
+  );
+
+  //IMDb navigation button to toggle through videos to the left 
+  videoNavibuttonLeft: By = By.xpath(
+    "//div[contains(@class, 'ipc-shoveler__arrow ipc-shoveler__arrow--visible ipc-shoveler__arrow--left ipc-pager ipc-pager--visible ipc-pager--left')]"
+  )
+ 
   constructor(driver: WebDriver) {
     this.driver = driver
   }
@@ -141,4 +151,6 @@ export class imdbBasePage {
       .findElement(this.imdbPasswordInputField)
       .sendKeys(pass)
   }
+
 }
+
