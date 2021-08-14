@@ -1,33 +1,28 @@
-import { imdbBasePage } from "./imdbBasePage";
-import {
-  WebDriver,
-  Builder,
-  Capabilities,
-  until,
-  By,
-} from "selenium-webdriver";
 const chromedriver = require("chromedriver");
+import { WebDriver, Builder, Capabilities, until, By } from "selenium-webdriver";
 const driver: WebDriver = new Builder()
-  .withCapabilities(Capabilities.chrome())
-  .build();
+    .withCapabilities(Capabilities.chrome())
+    .build();
 
+import { BasePage } from "./imdbBasePage";
 
-  
-const bp = new imdbBasePage(driver);
+const page = new BasePage(driver);
 
-describe("Viewing celebrities birthday", () => {
-  beforeEach(async () => {
-    await bp.navigate("https://www.imdb.com/?ref_=nv_home");
-  });
-  afterAll(async () => {
-    await bp.quit();
-  });
+// Function lists celebrity born on current date
+test("celeb birthday", async () => {
+    // Navigates to IMDb home page
+    await page.navigate();
+    // Locates and pulls up drop down menu
+    await page.click(page.menu);
+    // Locates Celebs category
+    await page.click(page.celebs);
+    // Clicks Born Today button
+    await page.click(page.born);
+    let bday = await page.getText(page.actor);
+    // Verifies our actor on list
+    expect(bday).toContain("Anna Kendrick");
+});
 
-  test("viewing of celebrity birthday", async () => {
-    await bp.click(bp.menu);
-    await bp.click(bp.celebs);
-    await bp.click(bp.born);
-    let bday = await bp.getText(bp.actor);
-    expect(bday).toContain("Mãdãlina Ghenea");
-  });
+afterAll(async () => {
+    await page.quit()
 });
